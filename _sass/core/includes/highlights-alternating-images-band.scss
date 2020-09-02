@@ -6,4 +6,13 @@
     align-self: center;
     justify-self: center;
   }
+
+  @media screen and (max-width: 768px) {
+    .block-image{
+      order: 0;
+    } 
+    .block-content{
+      order: 1;
+    } 
+  }
 }

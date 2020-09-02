@@ -290,6 +290,15 @@ hr {
   }
 }
 
+.alt-type {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.alt-type-b {
+  @extend .alt-type;
+  font-weight: 600;
+}
+
 .text-centered {
   text-align: center;
 }
