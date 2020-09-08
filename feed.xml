@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-09-08T14:16:45+00:00</updated><id>/feed.xml</id><title type="html">Infinispan</title><subtitle>Infinispan is a distributed in-memory key/value data store with optional schema, available under the Apache License 2.0.</subtitle><entry><title type="html">Infinispan Server Tutorial</title><link href="/blog/infinispan-server-tutorial/" rel="alternate" type="text/html" title="Infinispan Server Tutorial" /><published>2020-07-28T12:00:00+00:00</published><updated>2020-07-28T12:00:00+00:00</updated><id>/blog/infinispan-server-tutorial</id><content type="html" xml:base="/blog/infinispan-server-tutorial/">&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Dear Infinispan community,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are wondering how to start with Infinispan Server from your Java Application,
+a new &lt;a href=&quot;https://infinispan.org/infinispan-server-tutorial/&quot;&gt;Tutorial&lt;/a&gt; is available.
+This tutorial covers the essentials to get started with Infinispan Server and
+takes around half an hour to complete.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In this tutorial you will learn how to:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Run Infinispan Server.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Access and use the Infinispan Console.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create Infinispan caches.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Read and write data as primitive types and Java objects.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add lifespans to entries so data expires.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deploy client listeners to get event notifications.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Search the data store for specific values.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use out-of-the-box testing with Junit 5 for verification.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Complete the tutorial, ask us anything about it, give us feedback
+and feel free to share it!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;get-it-use-it-ask-us&quot;&gt;Get it, Use it, Ask us!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please &lt;a href=&quot;https://infinispan.org/download/&quot;&gt;download&lt;/a&gt;,
+&lt;a href=&quot;https://issues.redhat.com/projects/ISPN&quot;&gt;report bugs&lt;/a&gt;,
+&lt;a href=&quot;https://infinispan.zulipchat.com/&quot;&gt;chat with us&lt;/a&gt;,
+ask questions on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/?tagnames=infinispan&amp;amp;sort=newest&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Katia Aresti</name></author><category term="tutorial" /><category term="learning" /><category term="server" /><summary type="html">Dear Infinispan community,</summary></entry><entry><title type="html">Infinispan 12.0.0.Dev01</title><link href="/blog/infinispan-12.0.0.Dev01/" rel="alternate" type="text/html" title="Infinispan 12.0.0.Dev01" /><published>2020-07-27T12:00:00+00:00</published><updated>2020-07-27T12:00:00+00:00</updated><id>/blog/infinispan-12.0.0.Dev01</id><content type="html" xml:base="/blog/infinispan-12.0.0.Dev01/">&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Dear Infinispan community,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The first of our development releases of Infinispan 12 is here and it features our upgrade to &lt;a href=&quot;https://hibernate.org/search/&quot;&gt;Hibernate Search 6&lt;/a&gt; which finally allows us to upgrade to &lt;a href=&quot;https://lucene.apache.org/&quot;&gt;Lucene 8.x&lt;/a&gt;. We&amp;#8217;ve had to change a few things in our query implementation to accommodate the latest and greatest and to make the feature simpler to use. As expected, being a development release, there are some rough edges and we&amp;#8217;d really love &lt;strong&gt;YOUR&lt;/strong&gt; help in making sure that we get everything right for the final release later this year.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can look at the &lt;a href=&quot;https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310799&amp;amp;version=12346555&quot;&gt;release notes&lt;/a&gt; to see what has changed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We&amp;#8217;re hard at work on new features, improvements and fixes, so watch this space for more announcements!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;get-it-use-it-ask-us&quot;&gt;Get it, Use it, Ask us!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please &lt;a href=&quot;https://infinispan.org/download/&quot;&gt;download&lt;/a&gt;,
+&lt;a href=&quot;https://issues.redhat.com/projects/ISPN&quot;&gt;report bugs&lt;/a&gt;,
+&lt;a href=&quot;https://infinispan.zulipchat.com/&quot;&gt;chat with us&lt;/a&gt;,
+ask questions on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/?tagnames=infinispan&amp;amp;sort=newest&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Tristan Tarrant</name></author><category term="release" /><category term="development" /><summary type="html">Dear Infinispan community,</summary></entry><entry><title type="html">Infinispan 11.0.1.Final “Corona Extra”</title><link href="/blog/infinispan-11.0.1.Final/" rel="alternate" type="text/html" title="Infinispan 11.0.1.Final “Corona Extra”" /><published>2020-07-03T12:00:00+00:00</published><updated>2020-07-03T12:00:00+00:00</updated><id>/blog/infinispan-11.0.1.Final</id><content type="html" xml:base="/blog/infinispan-11.0.1.Final/">&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Dear Infinispan community,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;we hope you&amp;#8217;ve been enjoying all the new goodies included in our latest major release, Infinispan 11.
+To show that we care about you, we have a brand new micro release for you which addresses a number of issues.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In particular, if you are using HTTP/2 with TLS/SSL, JCache with persistence, Spring Boot or RocksDB, we have fixes for you.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Additionally, the Infinispan Archetypes have been resurrected and are now being maintained as part of the main repository to ensure they won&amp;#8217;t fall out of sync anymore. Read more about how to &lt;a href=&quot;/docs/stable/titles/getting_started/getting_started.html#mvn_archetypes&quot;&gt;get started with a Maven archetype&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The following list shows what we have fixed:&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;component-upgrade&quot;&gt;Component Upgrade&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;https://issues.redhat.com/browse/ISPN-11843[ISPN-11843] - Upgrade SB starter to 2.3
+https://issues.redhat.com/browse/ISPN-12009[ISPN-12009] - Upgrade Hibernate to latest micro
+https://issues.redhat.com/browse/ISPN-12013[ISPN-12013] - Upgrade H2 database engine to 1.4.200
+https://issues.redhat.com/browse/ISPN-12014[ISPN-12014] - Upgrade mojo-executor&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;enhancement&quot;&gt;Enhancement&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;https://issues.redhat.com/browse/ISPN-11151[ISPN-11151] - Migrating some remote tests from jdg-functional-tests to upstream
+https://issues.redhat.com/browse/ISPN-11549[ISPN-11549] - Move Infinispan SB starter simple tutorials to simple tutorials repository
+https://issues.redhat.com/browse/ISPN-11782[ISPN-11782] - Docs: Cross-Site monitoring
+https://issues.redhat.com/browse/ISPN-11828[ISPN-11828] - Docs: Add stable docs to infinispan.org/documentation
+https://issues.redhat.com/browse/ISPN-11913[ISPN-11913] - Docs: Add search and improve index pages
+https://issues.redhat.com/browse/ISPN-11996[ISPN-11996] - Allow customize memory and memory swap for Testcontainers images
+https://issues.redhat.com/browse/ISPN-12001[ISPN-12001] - Add jboss-parent to upstream projects
+https://issues.redhat.com/browse/ISPN-12006[ISPN-12006] - Test upload schema with CLI
+https://issues.redhat.com/browse/ISPN-12007[ISPN-12007] - Elytron 1.12.1.Final
+https://issues.redhat.com/browse/ISPN-12010[ISPN-12010] - Remove Apache Commons Codec
+https://issues.redhat.com/browse/ISPN-12012[ISPN-12012] - Force the same Guava version in all transitive dependencies
+https://issues.redhat.com/browse/ISPN-12021[ISPN-12021] - Docs: Creating Caches Remotely
+https://issues.redhat.com/browse/ISPN-12039[ISPN-12039] - Docs: Hot Rod Per-Cache Simple Tutorial
+https://issues.redhat.com/browse/ISPN-12045[ISPN-12045] - Clarify jboss-marshalling deprecation message
+https://issues.redhat.com/browse/ISPN-12047[ISPN-12047] - Merge Async and Sync Cross-Site attributes
+https://issues.redhat.com/browse/ISPN-12053[ISPN-12053] - Remove jetty-client from the REST testsuite
+https://issues.redhat.com/browse/ISPN-12059[ISPN-12059] - CliIT allow external module use
+https://issues.redhat.com/browse/ISPN-12065[ISPN-12065] - Add the anchored-keys module to the server
+https://issues.redhat.com/browse/ISPN-12068[ISPN-12068] - HTTP/2 pipeline missing chunked handler&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;bug&quot;&gt;Bug&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;https://issues.redhat.com/browse/ISPN-11998[ISPN-11998] - Eviction new and legacy attributes should stay in sync
+https://issues.redhat.com/browse/ISPN-12017[ISPN-12017] - Explicitly disable the java8-test execution defined in the jboss-parent POM
+https://issues.redhat.com/browse/ISPN-12018[ISPN-12018] - Fix JpaStoreCompatibilityTest failure
+https://issues.redhat.com/browse/ISPN-12019[ISPN-12019] - Always attempt to initialize openssl
+https://issues.redhat.com/browse/ISPN-12026[ISPN-12026] - Fetch the correct IP:port when NodePort is used
+https://issues.redhat.com/browse/ISPN-12027[ISPN-12027] - RemoteCacheContainer missing getCache overrides
+https://issues.redhat.com/browse/ISPN-12030[ISPN-12030] - BlockHound is not active on JDK 13/14
+https://issues.redhat.com/browse/ISPN-12032[ISPN-12032] - JCache cache loader should not require marshalling
+https://issues.redhat.com/browse/ISPN-12038[ISPN-12038] - RocksDB compression options incomplete and incorrectly applied
+https://issues.redhat.com/browse/ISPN-12043[ISPN-12043] - Shared stores should not have (add|remove)Segments methods invoked
+https://issues.redhat.com/browse/ISPN-12046[ISPN-12046] - Out of the box server testing is broken
+https://issues.redhat.com/browse/ISPN-12056[ISPN-12056] - Some tests are failing on windows when they try to delete the SingleFileStore
+https://issues.redhat.com/browse/ISPN-12058[ISPN-12058] - wildfly/feature-pack module doesn't build with profile java8-test
+https://issues.redhat.com/browse/ISPN-12060[ISPN-12060] - WildFly modules integration tests do not work on WildFly 19
+https://issues.redhat.com/browse/ISPN-12064[ISPN-12064] - REST server returns 403 (forbidden) for same origin request
+https://issues.redhat.com/browse/ISPN-12067[ISPN-12067] - HTTP/2 framing error for invalid requests
+https://issues.redhat.com/browse/ISPN-12069[ISPN-12069] - Unable to override the marshaller in SB starter&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;sub-task&quot;&gt;Sub-task&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;https://issues.redhat.com/browse/ISPN-11953[ISPN-11953] - Create client archetype
+https://issues.redhat.com/browse/ISPN-11954[ISPN-11954] - Move archetypes to Infinispan repository
+https://issues.redhat.com/browse/ISPN-11955[ISPN-11955] - Remove testcase-archetype
+https://issues.redhat.com/browse/ISPN-11956[ISPN-11956] - Rework store-archetype to use the new NonBlockingStore SPI
+https://issues.redhat.com/browse/ISPN-11957[ISPN-11957] - Upgrade embedded archetype to 11.0
+https://issues.redhat.com/browse/ISPN-11958[ISPN-11958] - Document Archetypes&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;get-it-use-it-ask-us&quot;&gt;Get it, Use it, Ask us!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please &lt;a href=&quot;https://infinispan.org/download/&quot;&gt;download&lt;/a&gt;,
+&lt;a href=&quot;https://issues.jboss.org/projects/ISPN&quot;&gt;report bugs&lt;/a&gt;,
+&lt;a href=&quot;https://infinispan.zulipchat.com/&quot;&gt;chat with us&lt;/a&gt;,
+ask questions on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/?tagnames=infinispan&amp;amp;sort=newest&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Tristan Tarrant</name></author><category term="release" /><summary type="html">Dear Infinispan community,</summary></entry><entry><title type="html">Infinispan Native Server Image</title><link href="/blog/native-server-announce/" rel="alternate" type="text/html" title="Infinispan Native Server Image" /><published>2020-06-16T12:00:00+00:00</published><updated>2020-06-16T12:00:00+00:00</updated><id>/blog/native-server-announce</id><content type="html" xml:base="/blog/native-server-announce/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Starting with Infinispan 11, it&amp;#8217;s now possible to create a natively compiled version of the Infinispan server.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We have a new image that contains a natively compiled Infinispan server and has a footprint of only 286MB. Try it now:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;docker run -p 11222:11222 quay.io/infinispan/server-native:11.0&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;infinispan-quarkus-extensions&quot;&gt;Infinispan Quarkus Extensions&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://quarkus.io/&quot;&gt;Quarkus&lt;/a&gt; provides built in support for generating native executables, providing several
+abstractions to improve the development experience of creating native binaries. Building upon the
+&lt;a href=&quot;https://infinispan.org/blog/2019/11/11/serverng/&quot;&gt;new server&lt;/a&gt;, the Infinispan team have created a
+&lt;a href=&quot;https://github.com/infinispan/infinispan-quarkus&quot;&gt;Quarkus extension&lt;/a&gt; for both embedded and server use-cases.
+These extensions allow a native binary version of the server to be compiled and ran by simply executing:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;mvn clean install -Dnative
+./server-runner/target/infinispan-quarkus-server-runner-11.0.0.Final-runner
+    -Dquarkus.infinispan-server.config-file=infinispan.xml \
+    -Dquarkus.infinispan-server.config-path=server/conf \
+    -Dquarkus.infinispan-server.data-path=data \
+    -Dquarkus.infinispan-server.server-path=/opt/infinispan &amp;amp;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;native-server-image&quot;&gt;Native Server Image&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For many developers compiling your own Infinispan native binary manually is not desirable, therefore we
+provide the &lt;code&gt;infinispan/server-native&lt;/code&gt; image that uses a native server binary. The advantage of this over our JVM
+based &lt;code&gt;infinispan/server&lt;/code&gt; image is that we can no provide a much smaller image, 286 vs 468 MB, as we no longer need to
+include an openjdk JVM in the image.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The &lt;code&gt;server-native&lt;/code&gt; image is configured exactly the same as the JVM based &lt;code&gt;infinispan/server&lt;/code&gt; image. We can run an authenticated Infinispan server with
+a single user with the following command:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;docker run -p 11222:11222 -e USER=&quot;user&quot; -e PASS=&quot;pass&quot; quay.io/infinispan/server-native:11.0&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;From the output below, you can see the Quarkus banner as well various &lt;code&gt;io.quarkus&lt;/code&gt; logs indicating which extensions are being used.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;################################################################################
+#                                                                              #
+# IDENTITIES_PATH not specified                                                #
+# Generating Identities yaml using USER and PASS env vars.                     #
+################################################################################
+2020-06-16 09:27:39,638 INFO  [io.quarkus] (main) config-generator 2.0.0.Final native (powered by Quarkus 1.5.0.Final) started in 0.069s.
+2020-06-16 09:27:39,643 INFO  [io.quarkus] (main) Profile prod activated.
+2020-06-16 09:27:39,643 INFO  [io.quarkus] (main) Installed features: [cdi, qute]
+2020-06-16 09:27:39,671 INFO  [io.quarkus] (main) config-generator stopped in 0.001s
+2020-06-16 09:27:40,306 INFO  [ListenerBean] (main) The application is starting...
+2020-06-16 09:27:40,481 INFO  [org.inf.CONTAINER] (main) ISPN000128: Infinispan version: Infinispan 'Corona Extra' 11.0.0.Final
+2020-06-16 09:27:40,489 INFO  [org.inf.CLUSTER] (main) ISPN000078: Starting JGroups channel infinispan with stack image-tcp
+2020-06-16 09:27:45,560 INFO  [org.inf.CLUSTER] (main) ISPN000094: Received new cluster view for channel infinispan: [82914efa63fe-12913|0] (1) [82914efa63fe-12913]
+2020-06-16 09:27:45,562 INFO  [org.inf.CLUSTER] (main) ISPN000079: Channel infinispan local address is 82914efa63fe-12913, physical addresses are [10.0.2.100:7800]
+2020-06-16 09:27:45,566 INFO  [org.inf.CONTAINER] (main) ISPN000390: Persisted state, version=11.0.0.Final timestamp=2020-06-16T09:27:45.563303Z
+2020-06-16 09:27:45,584 INFO  [org.inf.CONTAINER] (main) ISPN000104: Using EmbeddedTransactionManager
+2020-06-16 09:27:45,617 INFO  [org.inf.SERVER] (ForkJoinPool.commonPool-worker-3) ISPN080018: Protocol HotRod (internal)
+2020-06-16 09:27:45,618 INFO  [org.inf.SERVER] (main) ISPN080018: Protocol REST (internal)
+2020-06-16 09:27:45,629 INFO  [org.inf.SERVER] (main) ISPN080004: Protocol SINGLE_PORT listening on 10.0.2.100:11222
+2020-06-16 09:27:45,629 INFO  [org.inf.SERVER] (main) ISPN080034: Server '82914efa63fe-12913' listening on http://10.0.2.100:11222
+2020-06-16 09:27:45,629 INFO  [org.inf.SERVER] (main) ISPN080001: Infinispan Server 11.0.0.Final started in 5457ms
+2020-06-16 09:27:45,629 INFO  [io.quarkus] (main) infinispan-quarkus-server-runner 11.0.0.Final native (powered by Quarkus 1.5.0.Final) started in 5.618s.
+2020-06-16 09:27:45,629 INFO  [io.quarkus] (main) Profile prod activated.
+2020-06-16 09:27:45,629 INFO  [io.quarkus] (main) Installed features: [cdi, infinispan-embedded, infinispan-server]&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;further-reading&quot;&gt;Further Reading&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For more detailed information abou how to use the &lt;code&gt;infinispan/server&lt;/code&gt; and &lt;code&gt;infinispan/server-native&lt;/code&gt; image, please consult the
+&lt;a href=&quot;https://github.com/infinispan/infinispan-images/blob/master/README.md&quot;&gt;official documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;get-it-use-it-ask-us&quot;&gt;Get it, Use it, Ask us!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Quarkus extension and the &lt;code&gt;server-native&lt;/code&gt; image are currently provided as a tech preview, so please try them out and let us know
+if you run into any issues.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please &lt;a href=&quot;http://infinispan.org/download/&quot;&gt;download&lt;/a&gt;,
+&lt;a href=&quot;https://issues.jboss.org/projects/ISPN&quot;&gt;report bugs&lt;/a&gt;,
+&lt;a href=&quot;https://infinispan.zulipchat.com/&quot;&gt;chat with us&lt;/a&gt;,
+ask questions on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/?tagnames=infinispan&amp;amp;sort=newest&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Ryan Emerson</name></author><category term="docker" /><category term="native" /><category term="quarkus" /><summary type="html">Starting with Infinispan 11, it&amp;#8217;s now possible to create a natively compiled version of the Infinispan server.</summary></entry><entry><title type="html">Infinispan 11.0.0.Final “Corona Extra”</title><link href="/blog/infinispan-11.0.0.Final/" rel="alternate" type="text/html" title="Infinispan 11.0.0.Final “Corona Extra”" /><published>2020-06-15T12:00:00+00:00</published><updated>2020-06-15T12:00:00+00:00</updated><id>/blog/infinispan-11.0.0.Final</id><content type="html" xml:base="/blog/infinispan-11.0.0.Final/">&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Dear Infinispan community,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We&amp;#8217;re proud to announce the release of Infinispan 11. In the tradition of assigning beer codenames to our releases, we decided that &quot;Corona Extra&quot; would be a significant representation of the period during which most of the development has happened.
+We hope that you, your families and friends have not been impacted by the pandemic.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;but-didnt-you-release-10-x-not-long-ago&quot;&gt;But didn&amp;#8217;t you release 10.x not long ago ?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Indeed, but version numbers are just that: numbers. We are still continuing our near-quarterly releases, but, from now on, these will be identified by major version numbers.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;so-whats-new-in-infinispan-11&quot;&gt;So, what&amp;#8217;s new in Infinispan 11 ?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As usual we added new features, improved existing ones and prepared the groundwork for upcoming features.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;conflict-detection-and-resolution-for-asynchronous-cross-site-replication&quot;&gt;Conflict detection and resolution for Asynchronous Cross-Site Replication&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Cross-site replication is one of our most used features, as it enables a number of very useful use-cases such as geographical load distribution, zero-downtime disaster recovery and follow-the-sun data centers.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In this release we completely overhauled the way we implement asynchronous cross-site replication by introducing conflict resolution, based on vector clocks, as well as multiple site masters to increase throughput and reliability.
+This means that you can have multiple active sites safely replicating data between each other.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;server-security-overhaul&quot;&gt;Server security overhaul&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Infinispan Server&amp;#8217;s security, while very powerful, was also tricky to set up because of the configuration complexity.
+Since we wanted to make the &lt;a href=&quot;/blog/2020/06/04/server-secure-by-default/&quot;&gt;server secure by default&lt;/a&gt;, we put a lot of work in simplifying the configuration and removing all of the boilerplate.
+Additionally, if you are securing the server with &lt;a href=&quot;https://keycloak.org&quot;&gt;Keycloak&lt;/a&gt;, accessing the console will correctly obtain credentials through the realm login page.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;non-blocking-internals&quot;&gt;Non-blocking internals&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Our quest to make better use of the available hardware resources in all deployment models (bare-metal, containerized, virtualized) continues as we&amp;#8217;ve now consolidated a lot of thread-pools into just two: non-blocking and blocking.
+Most of the code now makes use of the non-blocking pool. Paths which may block, such as certain persistent stores, use the blocking pool so that they don&amp;#8217;t hold up work that may be processed without blocking.
+This release also includes a new non-blocking Store SPI, so that you can take advantage of stores with real non-blocking I/O.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;clustering&quot;&gt;Clustering&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As Infinispan is participating in &lt;a href=&quot;https://cloudbutton.eu/&quot;&gt;CloudButton&lt;/a&gt;, a Serverless Data Analytics Platform which is part of the
+&lt;a href=&quot;https://ec.europa.eu/programmes/horizon2020/&quot;&gt;European Union&amp;#8217;s Horizon 2020 research and innovation programme&lt;/a&gt;, we have introduced a new optional feature which allows scaling by adding new nodes to a cluster without state-transfer. This means that you can add capacity with zero-impact to your operations. Obviously this comes at the cost of reduced resilience in case of failures, but, for scenarios where high availability is not required, this gives you a highly scalable in-memory storage solution.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If high availability is your thing, the rebalancing algorithm which decides how segments (our subdivision of the data space) are mapped to nodes has been overhauled to be much more accurate and fairer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;queryindexing&quot;&gt;Query/Indexing&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Querying and indexing will be the major focus in Infinispan 12 (with the long awaited upgrade to &lt;a href=&quot;https://hibernate.org/search/&quot;&gt;Hibernate Search 6&lt;/a&gt; and &lt;a href=&quot;https://lucene.apache.org/&quot;&gt;Lucene 8&lt;/a&gt;).
+In preparation for that, &lt;strong&gt;a lot&lt;/strong&gt; of work has gone into deprecations, usability, clean ups and documentation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;hot-rod-client-improvements&quot;&gt;Hot Rod Client improvements&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Many usability changes have been added to our Java Hot Rod client:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;a Hot Rod URI as a compact way to configure a connection&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;automatic creation of caches on demand using supplied configurations/templates with support for wildcards&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;improved iteration of entries by concurrently splitting work across segments/nodes&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;other-server-changes&quot;&gt;Other Server changes&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are using the JDBC cache store to persist your cache entries to a database, Infinispan Server now restores the ability to create shared datasources which was lost when we abandoned the WildFly base.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;cli&quot;&gt;CLI&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The CLI received a number of new features such as logging manipulation, obtaining sever reports and user management, superseding the &lt;code&gt;user-tool&lt;/code&gt; script.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;a class=&quot;image&quot; href=&quot;/blog/img/ispn110cli.png&quot;&gt;&lt;img src=&quot;/assets/images/blog/ispn101welcome.png&quot; alt=&quot;CLI&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;console&quot;&gt;Console&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Our console overhaul, which started in 10, continues with lots of new features, integrations and polishing.
+Highlights are:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;entry creation dialog box&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;querying&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;KeyCloak integration&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;a class=&quot;image&quot; href=&quot;/blog/img/ispn110console.png&quot;&gt;&lt;img src=&quot;/assets/images/blog/ispn110console.png&quot; alt=&quot;onsole&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;clouds-containers-and-operators&quot;&gt;Clouds, containers and operators&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Our Infinispan Server image is now based on &lt;code&gt;ubi-minimal:8.2&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And thanks to our friends over at &lt;a href=&quot;https://quarkus.io&quot;&gt;Quarkus&lt;/a&gt;, Infinispan Server is now also available as a native image built using &lt;a href=&quot;https://graalvm.org&quot;&gt;GraalVM&lt;/a&gt;. This image is available on Quay.io and Docker Hub.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Kubernetes Operator adds a new Cache Custom Resource and the ability to expose services via Ingress and Routes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;documentation&quot;&gt;Documentation&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Documentation has also received a lot of love in all areas:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Added procedural content for rolling upgrades, Cache CR with the Operator, server patching, misc CLI commands, using RemoteCacheConfigurationBuilder.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Procedural content for different upgrade and migration tasks included in Upgrade Guide.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Operator and Spring Boot Starter guides now provide stable and development versions from the index page.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Updated index.html and throughout documentation to improve high-level context and aid retrievability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Getting Started content updated and streamlined.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Applied several modifications, additions, and removals to documentation via community feedback.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;whats-next&quot;&gt;What&amp;#8217;s next ?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As briefly mentioned above, Infinispan 12 will be our next release, scheduled for this autumn. We will be working on query/index improvements, backup/restore capabilities as well as the usual load of improvements, clean-ups across the board. We will keep you posted with development release and blogs about upcoming highlights. If you&amp;#8217;d like to contribute, just get in touch.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;get-it-use-it-ask-us&quot;&gt;Get it, Use it, Ask us!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please &lt;a href=&quot;https://infinispan.org/download/&quot;&gt;download&lt;/a&gt;,
+&lt;a href=&quot;https://issues.jboss.org/projects/ISPN&quot;&gt;report bugs&lt;/a&gt;,
+&lt;a href=&quot;https://infinispan.zulipchat.com/&quot;&gt;chat with us&lt;/a&gt;,
+ask questions on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/?tagnames=infinispan&amp;amp;sort=newest&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Tristan Tarrant</name></author><category term="release" /><summary type="html">Dear Infinispan community,</summary></entry><entry><title type="html">Off Heap enhancements</title><link href="/blog/offheap-resize/" rel="alternate" type="text/html" title="Off Heap enhancements" /><published>2020-06-09T12:00:00+00:00</published><updated>2020-06-09T12:00:00+00:00</updated><id>/blog/offheap-resize</id><content type="html" xml:base="/blog/offheap-resize/">&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The off heap implementation in Infinispan has become much more widely used since its introduction.
+There have been some issues and improvements identified to get this storage type more in line with
+its heap counterpart.
+For those of you that are unware the off-heap setting is actually only &quot;off&quot; the JVM heap and still resides in
+the native memory of the application.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The best part of all the below changes is the user does not need to change anything, other than
+configuring Off Heap storage.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;resizing-off-heap-container&quot;&gt;Resizing Off Heap Container&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For those of you that have used/configured off heap storage before you may have noticed that there
+was a configuration option named address count.
+This setting allowed you to configure how many address pointers the container had.
+You can think of this as essentially how many buckets you have in a HashMap.
+Unfortunately the number of pointers was fixed and therefore the user would have to know
+how many elements they expected to have.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This setting also had another problem.
+If the user required a larger size of elements this would increase startup time
+as the container can be iterated upon multiple times when it is empty.
+Iterating over a container of one million empty pointers would be much slower
+than iterating over one of only 1024 for example.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I am glad to say as of Infinispan 10.0.0.Final this setting and the performance of
+iteration have been greatly improved.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;configuration&quot;&gt;Configuration&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The address count variable is now ignored and instead the off heap based
+container will start at smaller amount of &quot;buckets&quot; in the range of 128 or 256.
+We then apply a load factor of .75, which means we will automatically increase
+the size of the underlying &quot;buckets&quot; once we have inserted a number of entries
+being 75% or larger than the current &quot;bucket&quot; size.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The resize operation will grow to have double the amount of &quot;buckets&quot; it had prior.
+The resize operation will be performed concurrently with other operations, providing
+minimal blocking as we have locks equal to the number of CPUs times two.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This will allow for a cache with off heap to be started significantly faster and
+relieves some configuration options that were unneeded.
+Note that the map, just like a java.util.HashMap, will not decrease the number of
+&quot;buckets&quot; once it grows to a given size.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;iteration-changes&quot;&gt;Iteration changes&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I mentioned that iteration was slower during startup of larger number of &quot;buckets&quot;.
+This was due to it possibly having a large number of them, however it was also
+plauged by an ineffecient way of iterating over them.
+In addition to rewriting the resize operation, we have also optimized the memory
+layout so that &quot;buckets&quot; can be iterated sequentially which provides more mechanical
+sympathy.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;hash-changes&quot;&gt;Hash changes&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This one is rather short and sweet, but the old hash algorithm we used would cause
+too many collisions for objects that had hash functions that returned values in a
+similar range, such as java.lang.Integer and java.util.String (with shared startubg
+characters).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Therefore it has been changed to provide a bit better spreading. This is part
+of ISPN 10.0.0.Final.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;expiration-bugs&quot;&gt;Expiration bugs&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Unfortunately off heap had a few issues with expiration.
+It didn&amp;#8217;t support max idle and expiration metadata was not properly transferred
+to new nodes during state transfer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In addition to max idle algorithm being rewritten, Off heap now properly supports
+max idle as of 10.1.4.Final and 11.0.0.Final.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Off heap metadata transferred to new nodes has been fixed in 10.1.8.Final and
+11.0.0.Final.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>William Burns</name></author><category term="off-heap" /><category term="storage" /><summary type="html">The off heap implementation in Infinispan has become much more widely used since its introduction. There have been some issues and improvements identified to get this storage type more in line with its heap counterpart. For those of you that are unware the off-heap setting is actually only &quot;off&quot; the JVM heap and still resides in the native memory of the application.</summary></entry><entry><title type="html">Infinispan Operator 1.1.2 is out!</title><link href="/blog/infinispan-operator-1.1.2/" rel="alternate" type="text/html" title="Infinispan Operator 1.1.2 is out!" /><published>2020-06-08T12:00:00+00:00</published><updated>2020-06-08T12:00:00+00:00</updated><id>/blog/infinispan-operator-1.1.2</id><content type="html" xml:base="/blog/infinispan-operator-1.1.2/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We&amp;#8217;re pleased to announce
+&lt;a href=&quot;https://operatorhub.io/operator/infinispan&quot;&gt;version 1.1.2 of the Infinispan Operator&lt;/a&gt;
+for Kubernetes and Red Hat OpenShift.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Release highlights:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Simplified configuration for external services.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Improved readability of CR yaml output.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now available from the &lt;a href=&quot;https://quay.io/repository/infinispan/operator?tag=latest&amp;amp;tab=tags&quot;&gt;Operator image registry&lt;/a&gt; at quay.io.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Get full release information at &lt;a href=&quot;https://github.com/infinispan/infinispan-operator/milestone/10?closed=1&quot;&gt;version 1.1.2&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Our community documentation has also been updated and improved! Be sure to check out the
+&lt;a href=&quot;https://infinispan.org/infinispan-operator/1.1.x/operator.html&quot;&gt;Infinispan Operator v1.1.x Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;update-channels-and-automatic-upgrades-on-openshift&quot;&gt;Update Channels and Automatic Upgrades on OpenShift&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Starting with this release we are moving channels from a stable/preview structure to a micro-stream structure. This means
+you&amp;#8217;ll get channels for each major.minor version of Infinispan.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For now version 1.1.x is available on the dev-preview channel but you should switch your Operator subscription to
+the 1.1.x channel before the next release to continue receiving updates.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you use the Automatic Approval upgrade policy on OpenShift, your cluster is now running Infinispan Operator version 1.1.2
+with the Infinispan 10.1.7.Final server image.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;get-it-use-it-ask-us&quot;&gt;Get it, Use it, Ask us!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Try the
+&lt;a href=&quot;https://github.com/infinispan/infinispan-simple-tutorials/tree/operator-1.1.x/operator&quot;&gt;simple tutorial for 1.1.x&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can &lt;a href=&quot;https://github.com/infinispan/infinispan-operator/issues&quot;&gt;report bugs&lt;/a&gt;,
+&lt;a href=&quot;https://infinispan.zulipchat.com/&quot;&gt;chat with us&lt;/a&gt;,
+ask questions on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/?tagnames=infinispan&amp;amp;sort=newest&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Vittorio Rigamonti</name></author><category term="release" /><category term="operator" /><summary type="html">We&amp;#8217;re pleased to announce version 1.1.2 of the Infinispan Operator for Kubernetes and Red Hat OpenShift.</summary></entry><entry><title type="html">Cross Site Replication Improvements</title><link href="/blog/xsite-improvements/" rel="alternate" type="text/html" title="Cross Site Replication Improvements" /><published>2020-06-05T12:00:00+00:00</published><updated>2020-06-05T12:00:00+00:00</updated><id>/blog/xsite-improvements</id><content type="html" xml:base="/blog/xsite-improvements/">&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Infinispan introduced Cross Site Replication functionality in version 5.2 and Infinispan 7 extended it to
+support state transfer.
+With an increase of popularity, Infinispan 11 brings two major improvements to Cross Site Replication.
+Let&amp;#8217;s take a look at them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;support-for-multiple-site-masters&quot;&gt;Support for multiple site masters&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Infinispan uses JGroups' &lt;a href=&quot;http://www.jgroups.org/manual4/index.html#Relay2Advanced&quot;&gt;RELAY2&lt;/a&gt;
+protocol to enable inter-site communication.
+Each site has Site Masters: these are nodes with special roles, and are responsible for the communication between sites.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;RELAY2 can use more than one Site Master per site allowing load balancing of the inter-site requests.
+The new algorithm is now able to take advantage of multiple Site Masters.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The attribute &lt;code&gt;max_site_masters&lt;/code&gt; configures the number of Site Masters, and it defaults to 1.
+To take advantage of the new algorithm, increase the number of Site Masters in RELAY2 configuration by changing
+&lt;code&gt;max_site_masters&lt;/code&gt; to a value higher than 1.
+A number greater than the number of nodes can be used, and it enables the Site Master role in all nodes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;relay.RELAY2 site=&quot;&amp;lt;LOCAL_SITE_NAME&amp;gt;&quot; max_site_masters=&quot;&amp;lt;PUT_VALUE_HERE&amp;gt;&quot;/&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;More information about RELAY2 is available in &lt;a href=&quot;http://www.jgroups.org/manual4/index.html#RELAY2&quot;&gt;JGroups' Manual&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;conflict-detection-and-resolution-for-asynchronous-cross-site-replication&quot;&gt;Conflict detection and resolution for Asynchronous Cross-Site Replication&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Infinispan is able to detect conflicts in asynchronous mode by taking advantage of vector clocks.
+A conflict happens when 2 or more sites update the same key at the same time.
+Let&amp;#8217;s look at an example between 2 sites (&lt;em&gt;LON&lt;/em&gt; and &lt;em&gt;NYC&lt;/em&gt;):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code&gt;            LON       NYC
+
+k1=(n/a)    0,0       0,0
+
+k1=2        1,0  --&amp;gt;  1,0   k1=2
+
+k1=3        1,1  &amp;lt;--  1,1   k1=3
+
+k1=5        2,1       1,2   k1=8
+
+                 --&amp;gt;  2,1 (conflict)
+(conflict)  1,2  &amp;lt;--
+
+k1=5        2,1  &amp;lt;-&amp;gt;  2,1   k1=5&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;LON&lt;/em&gt; puts &lt;code&gt;k1=2&lt;/code&gt;, with vector clock &lt;code&gt;1,0&lt;/code&gt;, and replicates it to &lt;em&gt;NYC&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;NYC&lt;/em&gt; puts &lt;code&gt;k1=3&lt;/code&gt;, with vector clock &lt;code&gt;1,1&lt;/code&gt;, and replicates it to &lt;em&gt;LON&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;However if &lt;em&gt;LON&lt;/em&gt; puts &lt;code&gt;k1=5&lt;/code&gt; (with vector &lt;code&gt;2,1&lt;/code&gt;), and &lt;em&gt;NYC&lt;/em&gt; puts &lt;code&gt;k1=8&lt;/code&gt; in &lt;em&gt;NYC&lt;/em&gt; (with vector clock &lt;code&gt;1,2&lt;/code&gt;)
+at the same time, Infinispan detects the conflict since none of the vector clocks are greater than the other.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Infinispan resolves the conflicts by comparing using the site names in lexicographical order.
+The site&amp;#8217;s name lower in lexicographical order takes priority.
+In the example above, both &lt;em&gt;LON&lt;/em&gt; and &lt;em&gt;NYC&lt;/em&gt; end up with &lt;code&gt;k1=5&lt;/code&gt; since &lt;em&gt;LON&lt;/em&gt; &amp;lt; &lt;em&gt;NYC&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can choose the priority by prepending a number to the site name.
+For example, if you want updates from &lt;em&gt;NYC&lt;/em&gt; to take priority over &lt;em&gt;LON&lt;/em&gt; updates,
+you can prepend a number to the site name, example: &lt;em&gt;1NYC&lt;/em&gt;, &lt;em&gt;2LON&lt;/em&gt; and so on.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For more information check the
+&lt;a href=&quot;https://infinispan.org/docs/dev/titles/xsite/xsite.html#conflicting_entries-xsite&quot;&gt;Infinispan Documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;get-it-use-it-ask-us&quot;&gt;Get it, Use it, Ask us!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please &lt;a href=&quot;https://infinispan.org/download/&quot;&gt;download&lt;/a&gt;,
+&lt;a href=&quot;https://issues.jboss.org/projects/ISPN&quot;&gt;report bugs&lt;/a&gt;,
+&lt;a href=&quot;https://infinispan.zulipchat.com/&quot;&gt;chat with us&lt;/a&gt;,
+ask questions on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/?tagnames=infinispan&amp;amp;sort=newest&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Pedro Ruivo</name></author><category term="xsite" /><category term="cross site replication" /><summary type="html">Infinispan introduced Cross Site Replication functionality in version 5.2 and Infinispan 7 extended it to support state transfer. With an increase of popularity, Infinispan 11 brings two major improvements to Cross Site Replication. Let&amp;#8217;s take a look at them.</summary></entry><entry><title type="html">Secure Infinispan server by default</title><link href="/blog/server-secure-by-default/" rel="alternate" type="text/html" title="Secure Infinispan server by default" /><published>2020-06-04T12:00:00+00:00</published><updated>2020-06-04T12:00:00+00:00</updated><id>/blog/server-secure-by-default</id><content type="html" xml:base="/blog/server-secure-by-default/">&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Infinispan server we introduced in 10.0 exposes a single port through which both Hot Rod and HTTP clients can connect.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While Infinispan has had &lt;strong&gt;very&lt;/strong&gt; extensive security support since 7.0, the out-of-the-box default configuration did not enable authentication.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Infinispan 11.0&amp;#8217;s server&amp;#8217;s default configuration, instead, requires authentication.
+We have made several improvements to how authentication is configured and the tooling we provide to make the experience as smooth as possible.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;automatic-authentication-mechanism-selection&quot;&gt;Automatic authentication mechanism selection&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Previously, when enabling authentication, you had to explicitly define which mechanisms had to be enabled per-protocol, with all of the peculiarities specific to each one (i.e. SASL for Hot Rod, HTTP for REST). Here is an example configuration with Infinispan 10.1 that enables DIGEST authentication:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;endpoints socket-binding=&quot;default&quot; security-realm=&quot;default&quot;&amp;gt;
+   &amp;lt;hotrod-connector name=&quot;hotrod&quot;&amp;gt;
+      &amp;lt;authentication&amp;gt;
+         &amp;lt;sasl mechanisms=&quot;DIGEST-MD5&quot; server-name=&quot;infinispan&quot;/&amp;gt;
+      &amp;lt;/authentication&amp;gt;
+   &amp;lt;/hotrod-connector&amp;gt;
+   &amp;lt;rest-connector name=&quot;rest&quot;&amp;gt;
+      &amp;lt;authentication mechanisms=&quot;DIGEST&quot;/&amp;gt;
+   &amp;lt;/rest-connector&amp;gt;
+&amp;lt;/endpoints&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In Infinispan 11.0, the mechanisms are automatically selected based on the capabilities of the security realm. Using the following configuration:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;endpoints socket-binding=&quot;default&quot; security-realm=&quot;default&quot;&amp;gt;
+   &amp;lt;hotrod-connector name=&quot;hotrod&quot; /&amp;gt;
+   &amp;lt;rest-connector name=&quot;rest&quot;/&amp;gt;
+&amp;lt;/endpoints&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;together with a properties security realm, will enable DIGEST for HTTP and SCRAM-*, DIGEST-* and CRAM-MD5 for Hot Rod. BASIC/PLAIN will only be implicitly enabled when the security realm has a TLS/SSL identity.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The following tables summarize the mapping between realm type and implicitly enabled mechanisms.&lt;/p&gt;
+&lt;/div&gt;
+&lt;table class=&quot;tableblock frame-all grid-all stretch table&quot;&gt;
+&lt;caption class=&quot;title&quot;&gt;Table 1. SASL Authentication Mechanisms (Hot Rod)&lt;/caption&gt;
+&lt;colgroup&gt;
+&lt;col style=&quot;width: 50%;&quot;&gt;
+&lt;col style=&quot;width: 50%;&quot;&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Security Realm&lt;/th&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;SASL Authentication Mechanism&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Property Realms and LDAP Realms&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;SCRAM-*, DIGEST-*, CRAM-MD5&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Token Realms&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;OAUTHBEARER&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Trust Realms&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;EXTERNAL&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Kerberos Identities&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;GSSAPI, GS2-KRB5&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;SSL/TLS Identities&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;PLAIN&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;tableblock frame-all grid-all stretch table&quot;&gt;
+&lt;caption class=&quot;title&quot;&gt;Table 2. HTTP Authentication Mechanisms (REST)&lt;/caption&gt;
+&lt;colgroup&gt;
+&lt;col style=&quot;width: 50%;&quot;&gt;
+&lt;col style=&quot;width: 50%;&quot;&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Security Realm&lt;/th&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;HTTP Authentication Mechanism&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Property Realms and LDAP Realms&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;DIGEST&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Token Realms&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;BEARER_TOKEN&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Trust Realms&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;CLIENT_CERT&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Kerberos Identities&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;SPNEGO&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;SSL/TLS Identities&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;BASIC&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;automatic-encryption&quot;&gt;Automatic encryption&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If the security realm has a TLS/SSL identity, the endpoint will automatically enable TLS for all protocols.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;encrypted-properties-security-realm&quot;&gt;Encrypted properties security realm&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The properties realm that is part of the default configuration has been greatly improved in Infinispan 11. The passwords are now stored in multiple encrypted formats in order to support the various DIGEST, SCRAM and PLAIN/BASIC mechanisms.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The &lt;code&gt;user&lt;/code&gt; functionality that is now built into the CLI allows easy creation and manipulation of users, passwords and groups:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[disconnected]&amp;gt; user create --password=secret --groups=admin admin
+[disconnected]&amp;gt; connect --username=admin --password=secret
+[ispn-29934@cluster//containers/default]&amp;gt; user ls
+[ &quot;admin&quot; ]
+[ispn-29934@cluster//containers/default]&amp;gt; user describe admin
+{ username: &quot;admin&quot;, realm: &quot;default&quot;, groups = [admin] }
+[ispn-29934@cluster//containers/default]&amp;gt; user password admin
+Set a password for the user: ******
+Confirm the password for the user: ******
+[ispn-29934@cluster//containers/default]&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;authorization-simplified&quot;&gt;Authorization: simplified&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Authorization is another security aspect of Infinispan. In previous versions, setting up authorization was complicated by the need to add all the needed roles to each cache:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;infinispan&amp;gt;
+   &amp;lt;cache-container name=&quot;default&quot;&amp;gt;
+      &amp;lt;security&amp;gt;
+         &amp;lt;authorization&amp;gt;
+            &amp;lt;identity-role-mapper/&amp;gt;
+            &amp;lt;role name=&quot;AdminRole&quot; permissions=&quot;ALL&quot;/&amp;gt;
+            &amp;lt;role name=&quot;ReaderRole&quot; permissions=&quot;READ&quot;/&amp;gt;
+            &amp;lt;role name=&quot;WriterRole&quot; permissions=&quot;WRITE&quot;/&amp;gt;
+            &amp;lt;role name=&quot;SupervisorRole&quot; permissions=&quot;READ WRITE EXEC BULK_READ&quot;/&amp;gt;
+         &amp;lt;/authorization&amp;gt;
+      &amp;lt;/security&amp;gt;
+      &amp;lt;distributed-cache name=&quot;secured&quot;&amp;gt;
+         &amp;lt;security&amp;gt;
+            &amp;lt;authorization roles=&quot;AdminRole ReaderRole WriterRole SupervisorRole&quot;/&amp;gt;
+         &amp;lt;/security&amp;gt;
+      &amp;lt;/distributed-cache&amp;gt;
+   &amp;lt;/cache-container&amp;gt;
+   ...
+&amp;lt;/infinispan&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;With Infinispan 11 you can avoid specifying all the roles at the cache level: just enable authorization and all roles will implicitly apply. As you can see, the cache definition is much more concise:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;infinispan&amp;gt;
+   &amp;lt;cache-container name=&quot;default&quot;&amp;gt;
+      ...
+      &amp;lt;distributed-cache name=&quot;secured&quot;&amp;gt;
+         &amp;lt;security&amp;gt;
+            &amp;lt;authorization/&amp;gt;
+         &amp;lt;/security&amp;gt;
+      &amp;lt;/distributed-cache&amp;gt;
+   &amp;lt;/cache-container&amp;gt;
+   ...
+&amp;lt;/infinispan&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h1 id=&quot;conclusions&quot; class=&quot;sect0&quot;&gt;Conclusions&lt;/h1&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We hope that the changes we&amp;#8217;ve made to improve security will make your servers more secure and easier to configure.
+For more information read the &lt;a href=&quot;https://infinispan.org/docs/dev/titles/server/server.html#security&quot;&gt;server security documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Tristan Tarrant</name></author><category term="server" /><category term="security" /><summary type="html">The Infinispan server we introduced in 10.0 exposes a single port through which both Hot Rod and HTTP clients can connect.</summary></entry><entry><title type="html">Hot Rod per-cache configuration</title><link href="/blog/hotrod-percache-configuration/" rel="alternate" type="text/html" title="Hot Rod per-cache configuration" /><published>2020-05-30T00:00:00+00:00</published><updated>2020-05-30T00:00:00+00:00</updated><id>/blog/hotrod-percache-configuration</id><content type="html" xml:base="/blog/hotrod-percache-configuration/">&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Aside from being able to configure a Java Hot Rod client through a &lt;a href=&quot;https://infinispan.org/blog/&quot;&gt;compact URI&lt;/a&gt; representation, Infinispan 11 brings some additional changes to remote cache configuration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While remote caches did have some client-side configuration, this was never implemented cleanly, resorting to multiple overloaded variations on the &lt;code&gt;getCache()&lt;/code&gt; method, for example to obtain a transactional cache, or enabling near-caching.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Infinispan 11 now allows specifying per-cache configuration both through the API and through the declarative properties file.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Let&amp;#8217;s look at a few examples.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;ConfigurationBuilder builder = new ConfigurationBuilder()
+    .uri(&quot;hotrod://127.0.0.1&quot;);
+    .remoteCache(&quot;closecache&quot;)
+        .nearCacheMode(NearCacheMode.INVALIDATED)
+        .nearCacheMaxEntries(10000)
+    .remoteCache(&quot;txcache&quot;)
+        .transactionMode(TransactionMode.NON_XA);
+RemoteCacheManager manager = new RemoteCacheManager(builder.build());&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In the above code snippet, we enable near-caching for the cache &lt;code&gt;closecache&lt;/code&gt; and we enable NON_XA transactions on the cache &lt;code&gt;txcache&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The equivalent &lt;code&gt;hotrod-client.properties&lt;/code&gt; file:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;infinispan.client.hotrod.uri=hotrod://127.0.0.1
+infinispan.client.hotrod.cache.closecache.near_cache.mode=INVALIDATED
+infinispan.client.hotrod.cache.closecache.near_cache.max_entries=10000
+infinispan.client.hotrod.cache.txcache.transaction.transaction_mode=NON_XA&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;automatic-cache-creation&quot;&gt;Automatic cache creation&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A neat feature that has been implemented as part of per-cache configuration, is the ability to automatically create a cache on the server on first use, if it is missing, by supplying either an existing template or a full-blown configuration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;ConfigurationBuilder builder = new ConfigurationBuilder()
+    .uri(&quot;hotrod://127.0.0.1&quot;);
+    .remoteCache(&quot;mydistcache&quot;)
+        .templateName(&quot;org.infinispan.DIST_SYNC&quot;);
+RemoteCacheManager manager = new RemoteCacheManager(builder.build());
+Cache&amp;lt;String, String&amp;gt; cache = manager.getCache(&quot;mydistcache&quot;);
+...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The above example using a properties file would look like:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;infinispan.client.hotrod.uri=hotrod://127.0.0.1
+infinispan.client.hotrod.cache.mydistcache.template=org.infinispan.DIST_SYNC&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Tristan Tarrant</name></author><category term="hot rod" /><category term="configuration" /><summary type="html">Aside from being able to configure a Java Hot Rod client through a compact URI representation, Infinispan 11 brings some additional changes to remote cache configuration.</summary></entry></feed>
