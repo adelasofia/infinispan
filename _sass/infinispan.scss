@@ -175,6 +175,10 @@ form input[type="submit"] {
   border: 2px solid $blue;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+}
+
 table {
   border-collapse: collapse;
 
@@ -182,12 +186,12 @@ table {
   tbody th {
     font-size: 1.125rem;
     line-height: 1.5rem;
-    color: $dark-blue;
+    color: $white;
     font-weight: 400;
     text-align: left;
     padding: 1rem;
-    background-color: $blue;
-    border: 1px solid $blue;
+    background-color: $dark-blue;
+    border: 1px solid $dark-blue;
     > div,
     > div > span {
       color: $dark-blue;
@@ -195,13 +199,13 @@ table {
   }
   
   tbody td {
-    padding: .25rem 1rem;
-    border: 1px solid $blue;
+    padding: .5rem 1rem;
+    border: 1px solid #E5E5E5;
   }
 
   tbody tr {
     &:nth-child(even) {
-      background-color: $dark-blue;
+      background-color: #F5F5F5;
     }
     td p {
        margin: 0;

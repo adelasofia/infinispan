@@ -30,6 +30,8 @@ GEM
       rouge (~> 3.0)
       safe_yaml (~> 1.0)
       terminal-table (~> 1.8)
+    jekyll-archives (2.2.1)
+      jekyll (>= 3.6, < 5.0)
     jekyll-asciidoc (3.0.0)
       asciidoctor (>= 1.5.0)
       jekyll (>= 3.0.0)
@@ -79,6 +81,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 4.0)
+  jekyll-archives
   jekyll-asciidoc
   jekyll-feed (~> 0.6)
   jekyll-paginate-v2

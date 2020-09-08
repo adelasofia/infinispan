@@ -34,12 +34,7 @@
   </div>
   <div class="grid__item width-2-12 side-nav">
     <a href="{{site.baseurl}}/feed.xml"><i class="fas fa-rss-square"></i></a>
-    <h5>Tags</h5>
-    {% assign tag_words = site.tags | sort %}
-    {% for stats in tag_words %}
-     {% assign tag = stats | first %}
-     {% assign posts = stats | last %}
-     <a href="{{site.baseurl}}/blog/tag/{{tag}}">{{ tag }}</a></br>
-    {% endfor %}
+    <h5 class="margin-tb-sm">Tags</h5>
+    {% include most-popular-tags.html %}
   </div>
 </div>

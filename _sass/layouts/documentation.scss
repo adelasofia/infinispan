@@ -1,3 +1,7 @@
+.documentation-archive > .content {
+  padding-top: 0;
+}
+
 .documentation {
   .content {
     padding-bottom: 0;
@@ -34,5 +38,12 @@
         -moz-columns: 2;
       }
     }
+  }
+}
+
+.documentation-archive-band {
+  table {
+    width: 100%;
+    overflow: scroll;
   }
 }
