@@ -127,3 +127,5 @@ jekyll-archives:
     tag: tag-archive
   permalinks:
     tag: '/blog/tag/:name/'
+
+exclude: [vendor]
