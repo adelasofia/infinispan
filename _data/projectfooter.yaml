@@ -1,4 +1,4 @@
-footer_text: "Infinispan is released under the Apache 2.0 open source license. Learn more about the <a href='LINK_NEEDED' target='_blank'>Apache Software License 2.0</a>.<br/><br/>This website built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a> is hosted on <a href='https://pages.github.com/' target='_blank'>Github Pages</a> and is completely open source. If you want to make it better, <a href='LINK_NEEDED' target='_blank'>fork the website</a> and show us what you’ve got."
+footer_text: "Infinispan is released under the Apache 2.0 open source license. Learn more about the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a>.<br/><br/>This website built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a> is hosted on <a href='https://pages.github.com/' target='_blank'>Github Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/infinispan/infinispan.github.io' target='_blank'>fork the website</a> and show us what you’ve got."
 
 links:
   - title: Navigation
@@ -6,19 +6,19 @@ links:
       - page: Home
         url: /
       - page: Features
-        url: /LINK_NEEDED
+        url: /features
       - page: Docs
-        url: /LINK_NEEDED
+        url: /documentation
       - page: Tutorials
-        url: /LINK_NEEDED
+        url: /tutorials
       - page: Videos
-        url: /LINK_NEEDED
+        url: /videos
       - page: Use Cases
-        url: /LINK_NEEDED
+        url: /use-cases
       - page: Community
-        url: /LINK_NEEDED
+        url: /community
       - page: Download
-        url: /LINK_NEEDED
+        url: /download
   - title: Contribute
     subfolderitems:
       - page: Submit a Bug
@@ -28,6 +28,6 @@ links:
   - title: Follow Us
     subfolderitems:
       - page: Blog
-        url: /LINK_NEEDED
+        url: /blog
       - page: Twitter
         url: https://twitter.com/infinispan
