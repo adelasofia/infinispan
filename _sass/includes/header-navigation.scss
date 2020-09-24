@@ -38,6 +38,7 @@ div.nav-wrapper {
     &.active{
       font-weight: 800;
       position: relative;
+      color: $orange !important;
     }
   }
 
