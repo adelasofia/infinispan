@@ -60,7 +60,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 ## Authors
 
 * [**Adela Sofia A.**](https://github.com/adelasofia) - *Initial theme implementation*
-* [**Jason Brock**](https://github.com/jkbrock) - *Visual Designer*
+* [**James Cobb**](https://github.com/insectengine) - *Visual Designer*
 
 ## License
 
