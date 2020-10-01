@@ -246,6 +246,15 @@ hr {
   border-color: $blue;
 }
 
+.admonitionblock.note, .note, .admonitionblock.tip, .tip {
+  tbody .icon {
+    background-color: $green;
+  }
+  tbody .content {
+    background-color: $gray-0;
+  }
+}
+
 .full-width-bg {
   margin: 0 -13rem;
   padding: 0 13rem;
