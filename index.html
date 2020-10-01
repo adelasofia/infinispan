@@ -271,29 +271,28 @@ The first of our development releases of Infinispan 12 is here and it features o
       
         <div class="block-item width-4-12 width-12-12-m">
           <div class="post-title">
-            <h6 class="margin-tb-0"><a href="/infinispan/blog/infinispan-11.0.1.Final/">Infinispan 11.0.1.Final "Corona Extra"</a></h6>
+            <h6 class="margin-tb-0"><a href="/infinispan/blog/anchored-keys/">Introducing the Anchored Keys module</a></h6>
           </div>
           <p class="margin-tb-sm">
-            <small>July 03, 2020 &nbsp;&nbsp;&nbsp;Tags: <a href="/infinispan/blog/tag/release">release</a> </small>
+            <small>July 22, 2020 &nbsp;&nbsp;&nbsp;Tags: <a href="/infinispan/blog/tag/anchored keys">anchored keys</a> <a href="/infinispan/blog/tag/state transfer">state transfer</a> </small>
           </p>
-          <p class="byline margin-tb-sm">By Tristan Tarrant</p>
+          <p class="byline margin-tb-sm">By Infinispan version 11 introduces an experimental module that allows scaling up a cluster and adding new nodes without expensive *state transfer*.</p>
           
             <p>
+Background
 
 
-Dear Infinispan community,
-
-
-we hope you&#8217;ve been enjoying all the new goodies included in our latest major release, Infinispan 11.
-To show that we care about you, we have a brand new micro release for you which addresses a number of issues.
-
-
-In particular, if you are...</p>
+For background, the preferred way to scale up the storage capacity of a Infinispan cluster
+is to use distributed caches.
+A distributed cache stores each key/value pair on num-owners nodes,
+and each node can compute the location of a key (aka the key owners) direc...</p>
           
           <div class="text-centered">
-            <a href="/infinispan/blog/infinispan-11.0.1.Final/" class="button-cta tertiary">Read More</a> 
+            <a href="/infinispan/blog/anchored-keys/" class="button-cta tertiary">Read More</a> 
           </div>
         </div>
+      
+    
       
     
       

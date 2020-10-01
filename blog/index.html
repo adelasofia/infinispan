@@ -132,6 +132,31 @@ The first of our development releases of Infinispan 12 is here and it features o
     
       <div class="blog-list-item grid-wrapper">
         <div class="post-title grid__item width-12-12">
+          <h6><a href="/infinispan/blog/anchored-keys/">Introducing the Anchored Keys module</a></h6>
+        </div>
+        <div class="grid__item width-8-12 width-12-12-m">
+          <p class="margin-tb-0">
+            <small>July 22, 2020 &nbsp;&nbsp;&nbsp;Tags: <a href="/infinispan/blog/tag/anchored keys">anchored keys</a> <a href="/infinispan/blog/tag/state transfer">state transfer</a> </small>
+          </p>
+          <p class="byline margin-tb-sm">By Infinispan version 11 introduces an experimental module that allows scaling up a cluster and adding new nodes without expensive *state transfer*.</p>
+        </div>
+        <div class="grid__item width-12-12">
+          
+            <p class="margin-tb-0">
+Background
+
+
+For background, the preferred way to scale up the storage capacity of a Infinispan cluster
+is to use distributed caches.
+A distributed cache stores each key/value pair on num-owners nodes,
+and each node can compute the location of a key (aka the key owners) direc...</p>
+          
+        </div>
+        <div class="grid__item width-12-12"><a href="/infinispan/blog/anchored-keys/">Read More ></a></div>
+      </div>
+    
+      <div class="blog-list-item grid-wrapper">
+        <div class="post-title grid__item width-12-12">
           <h6><a href="/infinispan/blog/infinispan-11.0.1.Final/">Infinispan 11.0.1.Final "Corona Extra"</a></h6>
         </div>
         <div class="grid__item width-8-12 width-12-12-m">
@@ -268,35 +293,6 @@ Now available from the Operator image registry ...</p>
           
         </div>
         <div class="grid__item width-12-12"><a href="/infinispan/blog/infinispan-operator-1.1.2/">Read More ></a></div>
-      </div>
-    
-      <div class="blog-list-item grid-wrapper">
-        <div class="post-title grid__item width-12-12">
-          <h6><a href="/infinispan/blog/xsite-improvements/">Cross Site Replication Improvements</a></h6>
-        </div>
-        <div class="grid__item width-8-12 width-12-12-m">
-          <p class="margin-tb-0">
-            <small>June 05, 2020 &nbsp;&nbsp;&nbsp;Tags: <a href="/infinispan/blog/tag/xsite">xsite</a> <a href="/infinispan/blog/tag/cross site replication">cross site replication</a> </small>
-          </p>
-          <p class="byline margin-tb-sm">By Pedro Ruivo</p>
-        </div>
-        <div class="grid__item width-12-12">
-          
-            <p class="margin-tb-0">
-
-
-Infinispan introduced Cross Site Replication functionality in version 5.2 and Infinispan 7 extended it to
-support state transfer.
-With an increase of popularity, Infinispan 11 brings two major improvements to Cross Site Replication.
-Let&#8217;s take a look at them.
-
-
-
-
-Supp...</p>
-          
-        </div>
-        <div class="grid__item width-12-12"><a href="/infinispan/blog/xsite-improvements/">Read More ></a></div>
       </div>
     
     
@@ -475,6 +471,11 @@ Supp...</p>
   </li>
 
   <li>
+    <a href="/infinispan/blog/tag/state transfer">state transfer
+    </a>
+  </li>
+
+  <li>
     <a href="/infinispan/blog/tag/ beta"> beta
     </a>
   </li>
@@ -496,11 +497,6 @@ Supp...</p>
 
   <li>
     <a href="/infinispan/blog/tag/kubernetes">kubernetes
-    </a>
-  </li>
-
-  <li>
-    <a href="/infinispan/blog/tag/state transfer">state transfer
     </a>
   </li>
 
@@ -1326,6 +1322,11 @@ Supp...</p>
 
   <li>
     <a href="/infinispan/blog/tag/amazon">amazon
+    </a>
+  </li>
+
+  <li>
+    <a href="/infinispan/blog/tag/anchored keys">anchored keys
     </a>
   </li>
 
